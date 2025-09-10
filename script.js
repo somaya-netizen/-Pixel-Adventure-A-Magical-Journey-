@@ -1,8 +1,8 @@
 const storyElement = document.getElementById("story");
 const choicesElement = document.getElementById("choices");
-const backgroundElement = document.getElementById("background");
-const charactersContainer = document.getElementById("characters-container");
-const itemsContainer = document.getElementById("items-container");
+const backgroundElement = document.getElementById("images");
+const charactersContainer = document.getElementById("characters");
+const itemsContainer = document.getElementById("items");
 const inventoryList = document.getElementById("inventory-list");
 
 let inventory = [];
@@ -92,6 +92,7 @@ const story = {
     items: [{file:"items/crystal.png", name:"Crystal", offsetX:450, offsetY:120}],
     choices: [
       { text: "Take the crystal", next: "outside_house", actio_
+
 
 
 
