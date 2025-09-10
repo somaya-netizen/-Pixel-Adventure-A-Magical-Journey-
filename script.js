@@ -99,12 +99,17 @@ const story = {
   }
 };
 
-// Show scene
+// Show scene with smooth background
 function showScene(key) {
   const scene = story[key];
 
-  // Background
-  backgroundEl.style.backgroundImage = `url(${scene.background})`;
+  // Fade out background
+  backgroundEl.style.opacity = 0;
+
+  setTimeout(() => {
+    backgroundEl.style.backgroundImage = `url(${scene.background})`;
+    backgroundEl.style.opacity = 1;
+  }, 300);
 
   // Hero
   hero.src = scene.character;
