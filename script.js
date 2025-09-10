@@ -99,7 +99,7 @@ const story = {
   }
 };
 
-// Show scene with smooth background
+// Show scene with smooth fade
 function showScene(key) {
   const scene = story[key];
 
@@ -107,7 +107,9 @@ function showScene(key) {
   backgroundEl.style.opacity = 0;
 
   setTimeout(() => {
+    // Change background
     backgroundEl.style.backgroundImage = `url(${scene.background})`;
+    // Fade in
     backgroundEl.style.opacity = 1;
   }, 300);
 
