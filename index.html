@@ -8,13 +8,19 @@
 <body>
   <div id="game">
     <div id="background"></div>
-    <div id="characters"></div>
-    <div id="items"></div>
+    <div id="characters-container"></div>
+    <div id="items-container"></div>
+    <img id="hero" src="characters/hero.png" alt="Hero">
     <div id="textbox">
       <p id="story"></p>
-      <div id="choices"></div>
     </div>
   </div>
+
+  <!-- Sounds -->
+  <audio id="bgMusic" src="sounds/background.mp3" loop></audio>
+  <audio id="itemSound" src="sounds/item.wav"></audio>
+  <audio id="talkSound" src="sounds/talk.wav"></audio>
+
   <script src="script.js"></script>
 </body>
 </html>
