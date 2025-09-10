@@ -8,7 +8,7 @@ body {
 
 #game {
   position: relative;
-  width: 900px;
+  width: 800px;
   height: 600px;
   margin: 20px auto;
   border: 4px solid white;
@@ -18,25 +18,27 @@ body {
 #background {
   position: absolute;
   top: 0; left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   background-size: cover;
   background-position: center;
-  image-rendering: pixelated;
-  transition: opacity 0.6s ease-in-out;
-  opacity: 1;
+  transition: background-image 1s ease-in-out;
 }
 
-#characters-container img,
-#items-container img {
+#characters img,
+#items img {
   position: absolute;
-  image-rendering: pixelated;
-  transition: left 0.8s ease, bottom 0.8s ease, transform 0.3s ease;
+  height: 150px;
+  transition: left 0.2s linear, bottom 0.2s linear;
 }
 
-#characters-container img:hover,
-#items-container img:hover {
-  transform: scale(1.1);
+.character-walk {
+  animation: walk 0.5s infinite;
+}
+
+@keyframes walk {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
 }
 
 #textbox {
@@ -46,7 +48,6 @@ body {
   background: rgba(0,0,0,0.7);
   padding: 20px;
   box-sizing: border-box;
-  font-size: 12px;
 }
 
 #choices button {
@@ -55,31 +56,5 @@ body {
   padding: 10px;
   font-family: inherit;
   cursor: pointer;
-  background-color: #ffd6f0;
-  color: #333;
-  border: 2px solid #fff;
-  border-radius: 8px;
-  transition: background 0.3s;
 }
 
-#choices button:hover {
-  background-color: #ffb3d9;
-}
-
-#inventory {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0,0,0,0.6);
-  padding: 10px;
-  border: 2px solid white;
-  border-radius: 8px;
-  width: 180px;
-  font-size: 12px;
-}
-
-#inventory-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
