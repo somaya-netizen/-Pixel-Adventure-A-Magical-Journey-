@@ -24,12 +24,30 @@ function changeBackground(newBg) {
   }, 500);
 }
 
-// Move character smoothly
-function moveCharacter(charIndex, newLeft, newBottom, duration=800) {
-  const char = charactersContainer.children[charIndex];
-  char.style.transition = `left ${duration}ms linear, bottom ${duration}ms linear`;
-  char.style.left = newLeft + "px";
-  char.style.bottom = newBottom + "px";
+// Show characters
+function showCharacters(chars) {
+  charactersContainer.innerHTML = "";
+  chars.forEach(c => {
+    const img = document.createElement("img");
+    img.src = c.file;
+    img.style.left = c.left + "px";
+    img.style.bottom = c.bottom + "px";
+    img.alt = c.name;
+    charactersContainer.appendChild(img);
+  });
+}
+
+// Show items
+function showItems(items) {
+  itemsContainer.innerHTML = "";
+  items.forEach(i => {
+    const img = document.createElement("img");
+    img.src = i.file;
+    img.style.left = (i.offsetX || 400) + "px";
+    img.style.bottom = (i.offsetY || 120) + "px";
+    img.alt = i.name;
+    itemsContainer.appendChild(img);
+  });
 }
 
 // Story data
@@ -46,7 +64,7 @@ const story = {
   },
   forest: {
     text: "The forest is dark and mysterious. A path splits ahead.",
-    background: "images/forest.jpg",
+    background: "images/forest_of_magic.jpg",
     characters: [
       {file:"characters/hero.png", name:"Hero", left:200, bottom:100},
       {file:"characters/forest_creature.png", name:"Forest Creature", left:600, bottom:100}
@@ -61,7 +79,7 @@ const story = {
     text: "At the river, you find a strange map floating in the water.",
     background: "images/river.jpg",
     characters: [{file:"characters/hero.png", name:"Hero", left:400, bottom:100}],
-    items: [{file:"items/map.png", name:"Magic Map", offsetX:50, offsetY:20}],
+    items: [{file:"items/map.png", name:"Magic Map", offsetX:450, offsetY:120}],
     choices: [
       { text: "Pick up the map", next: "outside_house", action: () => addItem({name:"Magic Map"}) },
       { text: "Ignore it and go back", next: "start" }
@@ -71,75 +89,10 @@ const story = {
     text: "Glowing crystals light up the forest. You feel magic in the air.",
     background: "images/forest_of_magic_dark_road.jpg",
     characters: [{file:"characters/hero.png", name:"Hero", left:400, bottom:100}],
-    items: [{file:"items/crystal.png", name:"Crystal", offsetX:50, offsetY:20}],
+    items: [{file:"items/crystal.png", name:"Crystal", offsetX:450, offsetY:120}],
     choices: [
-      { text: "Take the crystal", next: "outside_house", action: () => addItem({name:"Crystal"}) },
-      { text: "Leave it", next: "start" }
-    ]
-  },
-  forest_dark_road: {
-    text: "The road is dangerous… you sense eyes watching you. A creature appears!",
-    background: "images/forest_of_magic_dark_road.jpg",
-    characters: [
-      {file:"characters/hero.png", name:"Hero", left:200, bottom:100},
-      {file:"characters/forest_creature.png", name:"Forest Creature", left:600, bottom:100}
-    ],
-    items: [],
-    choices: [
-      { text: "Fight", next: "bad_ending" },
-      { text: "Run away", next: "start" }
-    ]
-  },
-  outside_house: {
-    text: "You arrive outside the house of magic.",
-    background: "images/outside_house_of_magic.jpg",
-    characters: [
-      {file:"characters/hero.png", name:"Hero", left:300, bottom:100},
-      {file:"characters/magician.png", name:"Magician Eldrin", left:600, bottom:100}
-    ],
-    items: [],
-    choices: [
-      { text: "Enter the house", next: "house" },
-      { text: "Walk away", next: "neutral_ending" }
-    ]
-  },
-  house: {
-    text: "Inside the house, Magician Eldrin greets you. He asks for the crystal.",
-    background: "images/house_of_magic.jpg",
-    characters: [
-      {file:"characters/hero.png", name:"Hero", left:300, bottom:100},
-      {file:"characters/magician.png", name:"Magician Eldrin", left:600, bottom:100}
-    ],
-    items: [],
-    choices: [
-      { text: "Give him the crystal", next: "good_ending" },
-      { text: "Refuse", next: "bad_ending" }
-    ]
-  },
-  good_ending: {
-    text: "With your help, Eldrin uses the crystal to save the village. Good ending!",
-    background: "images/village.jpg",
-    characters: [{file:"characters/villager.png", name:"Villager", left:400, bottom:100}],
-    items: [],
-    choices: []
-  },
-  bad_ending: {
-    text: "Darkness takes over… you have met a tragic fate.",
-    background: "images/forest_of_magic_dark_road.jpg",
-    characters: [{file:"characters/forest_creature.png", name:"Forest Creature", left:400, bottom:100}],
-    items: [],
-    choices: []
-  },
-  neutral_ending: {
-    text: "You walk away from the adventure, never knowing what could have been.",
-    background: "images/village.jpg",
-    characters: [{file:"characters/hero.png", name:"Hero", left:400, bottom:100}],
-    items: [],
-    choices: []
-  }
-};
+      { text: "Take the crystal", next: "outside_house", actio_
 
-// Show a scene
-function show
+
 
 
