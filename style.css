@@ -22,7 +22,8 @@ body {
   height: 100%;
   background-size: cover;
   background-position: center;
-  transition: background 0.5s ease;
+  transition: background-image 0.5s ease, opacity 0.5s ease;
+  opacity: 1;
 }
 
 #hero {
@@ -38,7 +39,7 @@ body {
   position: absolute;
   width: 80px;
   height: 80px;
-  bottom: 160px; /* near hero */
+  bottom: 160px;
 }
 
 #textbox {
@@ -57,4 +58,3 @@ body {
   font-family: inherit;
   cursor: pointer;
 }
-
