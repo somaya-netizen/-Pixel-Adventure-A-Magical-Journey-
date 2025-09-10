@@ -1,8 +1,8 @@
 const storyElement = document.getElementById("story");
 const choicesElement = document.getElementById("choices");
-const backgroundElement = document.getElementById("background");
+const backgroundElement = document.getElementById("images");
 const characterElement = document.getElementById("character");
-const inventoryList = document.getElementById("inventory-list");
+const inventoryList = document.getElementById("items");
 
 // Player inventory
 let inventory = [];
@@ -28,7 +28,7 @@ const story = {
   },
   forest: {
     text: "The forest is dark and mysterious. A path splits ahead.",
-    background: "backgrounds/forest.jpg",
+    background: "images/forest.jpg",
     character: "characters/forest_creature.png",
     choices: [
       { text: "Take the bright path → Forest of Magic", next: "forest_of_magic" },
@@ -37,7 +37,7 @@ const story = {
   },
   river: {
     text: "At the river, you find a strange map floating in the water.",
-    background: "backgrounds/river.jpg",
+    background: "images/river.jpg",
     character: "characters/villager.png",
     choices: [
       { text: "Pick up the map", next: "outside_house", item: "map" },
@@ -46,7 +46,7 @@ const story = {
   },
   forest_of_magic: {
     text: "Glowing crystals light up the forest. You feel magic in the air.",
-    background: "backgrounds/forest_of_magic.jpg",
+    background: "images/forest_of_magic.jpg",
     character: "characters/hero.png",
     choices: [
       { text: "Take the crystal", next: "outside_house", item: "crystal" },
@@ -55,7 +55,7 @@ const story = {
   },
   forest_dark_road: {
     text: "The dark road is dangerous… you sense eyes watching you. A creature appears!",
-    background: "backgrounds/forest_of_magic_dark_road.jpg",
+    background: "images/forest_of_magic_dark_road.jpg",
     character: "characters/forest_creature.png",
     choices: [
       { text: "Fight", next: "bad_ending" },
@@ -64,7 +64,7 @@ const story = {
   },
   outside_house: {
     text: "You arrive outside the house of magic.",
-    background: "backgrounds/outside_house_of_magic.jpg",
+    background: "images/outside_house_of_magic.jpg",
     character: "characters/magician.png",
     choices: [
       { text: "Enter the house", next: "house" },
@@ -73,7 +73,7 @@ const story = {
   },
   house: {
     text: "Inside the house, Magician Eldrin greets you. He asks for the crystal.",
-    background: "backgrounds/house_of_magic.jpg",
+    background: "images/house_of_magic.jpg",
     character: "characters/magician.png",
     choices: [
       { text: "Give him the crystal", next: "good_ending", require: "crystal" },
@@ -82,19 +82,19 @@ const story = {
   },
   good_ending: {
     text: "With your help, Eldrin uses the crystal to save the village. Good ending!",
-    background: "backgrounds/village.jpg",
+    background: "images/village.jpg",
     character: "characters/villager.png",
     choices: []
   },
   bad_ending: {
     text: "Darkness takes over… you have met a tragic fate.",
-    background: "backgrounds/forest_of_magic_dark_road.jpg",
+    background: "images/forest_of_magic_dark_road.jpg",
     character: "characters/forest_creature.png",
     choices: []
   },
   neutral_ending: {
     text: "You walk away from the adventure, never knowing what could have been.",
-    background: "backgrounds/village.jpg",
+    background: "images/village.jpg",
     character: "characters/hero.png",
     choices: []
   }
@@ -104,7 +104,7 @@ const story = {
 function showScene(sceneKey) {
   const scene = story[sceneKey];
   storyElement.textContent = scene.text;
-  backgroundElement.style.backgroundImage = `url(${scene.background})`;
+  backgroundElement.style.backgroundImage = `url(${scene.images})`;
   characterElement.src = scene.character;
 
   choicesElement.innerHTML = "";
@@ -115,8 +115,8 @@ function showScene(sceneKey) {
 
     button.onclick = () => {
       // Add item if present
-      if (choice.item && !inventory.includes(items[choice.item].name)) {
-        inventory.push(items[choice.item].name);
+      if (choice.item && !items.includes(items[choice.item].name)) {
+        items.push(items[choice.item].name);
         updateInventory();
       }
 
@@ -144,3 +144,4 @@ function updateInventory() {
 
 // Start the game
 showScene("start");
+
